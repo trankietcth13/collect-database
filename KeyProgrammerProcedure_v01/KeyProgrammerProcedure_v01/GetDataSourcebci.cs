@@ -123,7 +123,6 @@ namespace KeyProgrammerProcedure_v01
                             IWebElement elementMakes4 = PropertiesCollection.driver.FindElement(By.Id("MainContent_ddMake1"));
                             //select Make on DDL
                             elementMakes4.AsDropDown().SelectByText(_listMakes);
-
                             MySheet.Cells[row, 1].Value = _listMakes;
                             package.Save();
                             System.Threading.Thread.Sleep(4000);
@@ -179,7 +178,26 @@ namespace KeyProgrammerProcedure_v01
                                             elementModel4.AsDropDown().SelectByText(_listModels);
                                             MySheet.Cells[row, 3].Value = _listModels;
                                             package.Save();
-                                            System.Threading.Thread.Sleep(5000);                                                                                   
+                                            System.Threading.Thread.Sleep(5000);
+
+                                            //if (_listModels.Contains("Challenger") || _listModels.Contains("Charger") )
+                                            //{
+                                            //    IWebElement findPlusButton = PropertiesCollection.driver.FindElement(By.Id("MainContent_gvApplication_btnDetail_0"));
+                                            //    findPlusButton.Click();
+                                            //    System.Threading.Thread.Sleep(1000);
+
+                                            //    IWebElement findPlusButton1 = PropertiesCollection.driver.FindElement(By.Id("MainContent_gvApplication_btnDetail_1"));
+                                            //    findPlusButton1.Click();
+                                            //    System.Threading.Thread.Sleep(1000);
+
+                                            //    IWebElement findPlusButton2 = PropertiesCollection.driver.FindElement(By.Id("MainContent_gvApplication_btnDetail_2"));
+                                            //    findPlusButton2.Click();
+                                            //    System.Threading.Thread.Sleep(1000);
+
+                                            //    IWebElement findPlusButton3 = PropertiesCollection.driver.FindElement(By.Id("MainContent_gvApplication_btnDetail_3"));
+                                            //    findPlusButton3.Click();
+                                            //    System.Threading.Thread.Sleep(1000);
+                                            //}
 
                                             #region Get BCI & CCA
                                             IList<IWebElement> element_table = PropertiesCollection.driver.FindElements(By.ClassName("subgridview"));
@@ -192,30 +210,10 @@ namespace KeyProgrammerProcedure_v01
 
                                                 int rowofTagTd = 0;
                                                 int colofTagTd = 0;
-
                                                                                             
                                                 foreach (var item_TagTd in TagTd_table)
-                                                {
-                                                    if (_listModels.Contains("Challenger") || _listModels.Contains("Charger") || AlltagTd == null || AlltagTd.Contains(""))
-                                                    {
-                                                        IWebElement findPlusButton = PropertiesCollection.driver.FindElement(By.Id("MainContent_gvApplication_btnDetail_0"));
-                                                        findPlusButton.Click();
-                                                        System.Threading.Thread.Sleep(1000);
-
-                                                        IWebElement findPlusButton1 = PropertiesCollection.driver.FindElement(By.Id("MainContent_gvApplication_btnDetail_1"));
-                                                        findPlusButton1.Click();
-                                                        System.Threading.Thread.Sleep(1000);
-
-                                                        IWebElement findPlusButton2 = PropertiesCollection.driver.FindElement(By.Id("MainContent_gvApplication_btnDetail_2"));
-                                                        findPlusButton2.Click();
-                                                        System.Threading.Thread.Sleep(1000);
-
-                                                        IWebElement findPlusButton3 = PropertiesCollection.driver.FindElement(By.Id("MainContent_gvApplication_btnDetail_3"));
-                                                        findPlusButton3.Click();
-                                                        System.Threading.Thread.Sleep(1000);
-                                                    }
-
-                                                    else if (_listMakes.Contains("BMW") || _listMakes == "BMW")
+                                                {                                                   
+                                                    if (_listMakes.Contains("BMW") || _listMakes == "BMW")
                                                             {
                                                                 rowofTagTd++;
                                                                 colofTagTd++;
@@ -1790,14 +1788,12 @@ namespace KeyProgrammerProcedure_v01
                                                             }
 
                                                     else if (_listMakes.Contains("Dodge") || _listMakes == "Dodge")
-                                                    {
-                                                           rowofTagTd++;
-                                                           colofTagTd++;
-                                                           switch (rowofTagTd)
+                                                    {                                                       
+                                                        rowofTagTd++;
+                                                        colofTagTd++;
+                                                        switch (rowofTagTd)
                                                                 {
-
                                                                     case 5: //Engines           
-
                                                                         MySheet.Cells[row, colofTagTd].Value = item_TagTd.Text.ToString();
                                                                         package.Save();
                                                                         break;                                                                    
@@ -1815,7 +1811,6 @@ namespace KeyProgrammerProcedure_v01
                                                                         MySheet.Cells[row, colofTagTd].Value = item_TagTd.Text.ToString();
                                                                         package.Save();
                                                                         break;
-
                                                                     case 14: //sub_CCA
                                                                         MySheet.Cells[row, colofTagTd].Value = item_TagTd.Text.ToString();
                                                                         package.Save();
@@ -1881,7 +1876,12 @@ namespace KeyProgrammerProcedure_v01
                                                                         MySheet.Cells[row, colofTagTd].Value = item_TagTd.Text.ToString();
                                                                         package.Save();
                                                                         break;
-                                                                
+
+                                                                    case 38: //Get Engine
+                                                                        MySheet.Cells[row, colofTagTd].Value = item_TagTd.Text.ToString();
+                                                                        package.Save();
+                                                                        break;
+
                                                                     case 40:
                                                                         MySheet.Cells[row, colofTagTd].Value = item_TagTd.Text.ToString();
                                                                         package.Save();
@@ -1892,11 +1892,15 @@ namespace KeyProgrammerProcedure_v01
                                                                         package.Save();
                                                                         break;
 
-                                                                    case 48: //Get Engine
+                                                                    case 42:
                                                                         MySheet.Cells[row, colofTagTd].Value = item_TagTd.Text.ToString();
                                                                         package.Save();
                                                                         break;
 
+                                                                    case 48: //Get Engine
+                                                                                MySheet.Cells[row, colofTagTd].Value = item_TagTd.Text.ToString();
+                                                                                package.Save();
+                                                                                break;
                                                                 
                                                                     case 51:
                                                                         MySheet.Cells[row, colofTagTd].Value = item_TagTd.Text.ToString();

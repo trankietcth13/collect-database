@@ -54,14 +54,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="KeyProgrammerProcedure_v01.exe" size="98256">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="KeyProgrammerProcedure_v01.exe" size="97744">
       <assemblyIdentity name="KeyProgrammerProcedure_v01" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>/g+Q7XlLauhSZ2FokWOSnA218NROwUp/X+cE/neb0wg=</dsig:DigestValue>
+        <dsig:DigestValue>hTymyIKD6hFW7dSkmD2ICU3156cGG+aZJ0E4aQfYt3M=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
