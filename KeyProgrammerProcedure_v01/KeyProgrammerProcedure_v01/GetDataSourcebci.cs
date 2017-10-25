@@ -107,7 +107,7 @@ namespace KeyProgrammerProcedure_v01
             foreach(string _listMakes in AllMakes)
             {
                 //skip Please choose Make
-                if (String.IsNullOrEmpty(_listMakes) || String.IsNullOrWhiteSpace(_listMakes) || _listMakes.Contains("-select-") || _listMakes.Contains("Cadillac") || _listMakes.Contains("Buick") || _listMakes.Contains("BMW") || _listMakes.Contains("Acura") || _listMakes.Contains("Audi") || _listMakes.Contains("Chevrolet") || _listMakes.Contains("Chrysler"))//Chrysler
+                if (String.IsNullOrEmpty(_listMakes) || String.IsNullOrWhiteSpace(_listMakes) || _listMakes.Contains("-select-") || _listMakes.Contains("Cadillac") || _listMakes.Contains("Buick") || _listMakes.Contains("BMW") || _listMakes.Contains("Acura") || _listMakes.Contains("Audi") || _listMakes.Contains("Chevrolet") || _listMakes.Contains("Chrysler") || _listMakes.Contains("Dodge") || _listMakes.Contains("Eagle") || _listMakes.Contains("Geo") || _listMakes.Contains("GMC"))//Chrysler
                 {
                     continue;
                 }
@@ -136,7 +136,7 @@ namespace KeyProgrammerProcedure_v01
                             foreach (string _listYears in AllYears)
                             {
                                 //skip Please choose Make
-                                if (String.IsNullOrEmpty(_listYears) || String.IsNullOrWhiteSpace(_listYears) || _listYears.Contains("-select-")|| _listYears.Contains("2015") || _listYears.Contains("2016"))//|| _listYears.Contains("2013") || _listYears.Contains("2014") || _listYears.Contains("2012") || _listYears.Contains("2011")) //|| _listYears.Contains("2010") || _listYears.Contains("2009") || _listYears.Contains("2008")) // || _listYears.Contains("2009")|| _listYears.Contains("2015") || _listYears.Contains("2014") || _listYears.Contains("2013") || _listYears.Contains("2012") || _listYears.Contains("2011") || _listYears.Contains("2010") || _listYears.Contains("2009")) //|| _listYears.Contains("2013")) //|| _listYears.Contains("2016")
+                                if (String.IsNullOrEmpty(_listYears) || String.IsNullOrWhiteSpace(_listYears) || _listYears.Contains("-select-"))//|| _listYears.Contains("2015") || _listYears.Contains("2016"))//|| _listYears.Contains("2013") || _listYears.Contains("2014") || _listYears.Contains("2012") || _listYears.Contains("2011")) //|| _listYears.Contains("2010") || _listYears.Contains("2009") || _listYears.Contains("2008")) // || _listYears.Contains("2009")|| _listYears.Contains("2015") || _listYears.Contains("2014") || _listYears.Contains("2013") || _listYears.Contains("2012") || _listYears.Contains("2011") || _listYears.Contains("2010") || _listYears.Contains("2009")) //|| _listYears.Contains("2013")) //|| _listYears.Contains("2016")
                                 {
                                     continue;
                                 }
@@ -180,7 +180,7 @@ namespace KeyProgrammerProcedure_v01
                                             package.Save();
                                             System.Threading.Thread.Sleep(5000);
 
-                                            //if (_listModels.Contains("Challenger") || _listModels.Contains("Charger") )
+                                            //if (_listModels.Contains("Challenger") || _listModels.Contains("Charger"))
                                             //{
                                             //    IWebElement findPlusButton = PropertiesCollection.driver.FindElement(By.Id("MainContent_gvApplication_btnDetail_0"));
                                             //    findPlusButton.Click();
@@ -1978,6 +1978,243 @@ namespace KeyProgrammerProcedure_v01
                                                                     default:
                                                                         break;
                                                                 }
+                                                    }
+
+                                                    else if (_listMakes.Contains("Honda") || _listMakes == "Honda")
+                                                    {
+                                                        rowofTagTd++;
+                                                        colofTagTd++;
+                                                        switch (rowofTagTd)
+                                                        {
+
+                                                            case 5: //Engines           
+
+                                                                MySheet.Cells[row, colofTagTd].Value = item_TagTd.Text.ToString();
+                                                                package.Save();
+                                                                break;
+                                                            //case 6:
+                                                            //    //write CCA 2
+                                                            //    //Engines
+                                                            //    MySheet.Cells[row, colofTagTd].Value = item_TagTd.Text.ToString();
+                                                            //    break;
+
+                                                            //case 7:                                                            
+                                                            //    MySheet.Cells[row, colofTagTd].Value = item_TagTd.Text.ToString();
+                                                            //    break;
+                                                            case 8:  //BCI                                                            
+                                                                MySheet.Cells[row, colofTagTd].Value = item_TagTd.Text.ToString();
+                                                                package.Save();
+                                                                break;
+
+                                                            case 9: //CCA
+                                                                MySheet.Cells[row, colofTagTd].Value = item_TagTd.Text.ToString();
+                                                                package.Save();
+                                                                break;
+
+                                                            case 13:  //sub_BCI                                                            
+                                                                MySheet.Cells[row, colofTagTd].Value = item_TagTd.Text.ToString();
+                                                                package.Save();
+                                                                break;
+
+                                                            case 14: //sub_CCA
+                                                                MySheet.Cells[row, colofTagTd].Value = item_TagTd.Text.ToString();
+                                                                package.Save();
+                                                                break;
+
+                                                            case 16: //Get Engine
+                                                                MySheet.Cells[row, colofTagTd].Value = item_TagTd.Text.ToString();
+                                                                package.Save();
+                                                                break;
+
+
+                                                            case 19:
+                                                                MySheet.Cells[row, colofTagTd].Value = item_TagTd.Text.ToString();
+                                                                package.Save();
+                                                                break;
+                                                            //case 21:
+                                                            //    MySheet.Cells[row, colofTagTd].Value = item_TagTd.Text.ToString();
+                                                            //    package.Save();
+                                                            //    break;
+
+                                                            case 20:
+                                                                MySheet.Cells[row, colofTagTd].Value = item_TagTd.Text.ToString();
+                                                                package.Save();
+                                                                break;
+
+                                                            case 21: //Get Engine
+                                                                MySheet.Cells[row, colofTagTd].Value = item_TagTd.Text.ToString();
+                                                                package.Save();
+                                                                break;
+
+
+                                                            //case 23:
+                                                            //    MySheet.Cells[row, colofTagTd].Value = item_TagTd.Text.ToString();
+                                                            //    package.Save();
+                                                            //    break;
+
+                                                            case 24:
+                                                                MySheet.Cells[row, colofTagTd].Value = item_TagTd.Text.ToString();
+                                                                package.Save();
+                                                                break;
+
+                                                            case 25:
+                                                                MySheet.Cells[row, colofTagTd].Value = item_TagTd.Text.ToString();
+                                                                package.Save();
+                                                                break;
+
+                                                            case 27: //Get Engine
+                                                                MySheet.Cells[row, colofTagTd].Value = item_TagTd.Text.ToString();
+                                                                package.Save();
+                                                                break;
+
+                                                            //case 28:
+                                                            //    MySheet.Cells[row, colofTagTd].Value = item_TagTd.Text.ToString();
+                                                            //    package.Save();
+                                                            //    break;
+
+                                                            case 29:
+                                                                MySheet.Cells[row, colofTagTd].Value = item_TagTd.Text.ToString();
+                                                                package.Save();
+                                                                break;
+
+                                                            case 30:
+                                                                MySheet.Cells[row, colofTagTd].Value = item_TagTd.Text.ToString();
+                                                                package.Save();
+                                                                break;
+
+                                                            case 31:
+                                                                MySheet.Cells[row, colofTagTd].Value = item_TagTd.Text.ToString();
+                                                                package.Save();
+                                                                break;
+
+                                                            //case 33:
+                                                            //    MySheet.Cells[row, colofTagTd].Value = item_TagTd.Text.ToString();
+                                                            //    package.Save();
+                                                            //    break;
+
+                                                            //case 34:
+                                                            //    MySheet.Cells[row, colofTagTd].Value = item_TagTd.Text.ToString();
+                                                            //    package.Save();
+                                                            //    break;
+
+                                                            case 37: //Get Engine
+                                                                MySheet.Cells[row, colofTagTd].Value = item_TagTd.Text.ToString();
+                                                                package.Save();
+                                                                break;
+
+                                                            //case 38:
+                                                            //    MySheet.Cells[row, colofTagTd].Value = item_TagTd.Text.ToString();
+                                                            //    package.Save();
+                                                            //    break;
+
+                                                            //case 39:
+                                                            //    MySheet.Cells[row, colofTagTd].Value = item_TagTd.Text.ToString();
+                                                            //    package.Save();
+                                                            //    break;
+
+                                                            case 40:
+                                                                MySheet.Cells[row, colofTagTd].Value = item_TagTd.Text.ToString();
+                                                                package.Save();
+                                                                break;
+
+                                                            case 41:
+                                                                MySheet.Cells[row, colofTagTd].Value = item_TagTd.Text.ToString();
+                                                                package.Save();
+                                                                break;
+
+                                                            case 45:
+                                                                MySheet.Cells[row, colofTagTd].Value = item_TagTd.Text.ToString();
+                                                                package.Save();
+                                                                break;
+
+                                                            case 46: //Get Engine
+                                                                MySheet.Cells[row, colofTagTd].Value = item_TagTd.Text.ToString();
+                                                                package.Save();
+                                                                break;
+
+
+                                                            //case 49:
+                                                            //    MySheet.Cells[row, colofTagTd].Value = item_TagTd.Text.ToString();
+                                                            //    package.Save();
+                                                            //    break;
+
+                                                            case 50:
+                                                                MySheet.Cells[row, colofTagTd].Value = item_TagTd.Text.ToString();
+                                                                package.Save();
+                                                                break;
+
+                                                            case 51:
+                                                                MySheet.Cells[row, colofTagTd].Value = item_TagTd.Text.ToString();
+                                                                package.Save();
+                                                                break;
+
+                                                            case 54:
+                                                                MySheet.Cells[row, colofTagTd].Value = item_TagTd.Text.ToString();
+                                                                package.Save();
+                                                                break;
+
+
+                                                            case 55:
+                                                                MySheet.Cells[row, colofTagTd].Value = item_TagTd.Text.ToString();
+                                                                package.Save();
+                                                                break;
+
+                                                            case 59:
+                                                                MySheet.Cells[row, colofTagTd].Value = item_TagTd.Text.ToString();
+                                                                package.Save();
+                                                                break;
+
+
+                                                            case 60:
+                                                                MySheet.Cells[row, colofTagTd].Value = item_TagTd.Text.ToString();
+                                                                package.Save();
+                                                                break;
+
+
+                                                            case 64:
+                                                                MySheet.Cells[row, colofTagTd].Value = item_TagTd.Text.ToString();
+                                                                package.Save();
+                                                                break;
+
+                                                            case 65:
+                                                                MySheet.Cells[row, colofTagTd].Value = item_TagTd.Text.ToString();
+                                                                package.Save();
+                                                                break;
+
+
+                                                            case 69:
+                                                                MySheet.Cells[row, colofTagTd].Value = item_TagTd.Text.ToString();
+                                                                package.Save();
+                                                                break;
+
+                                                            case 70:
+                                                                MySheet.Cells[row, colofTagTd].Value = item_TagTd.Text.ToString();
+                                                                package.Save();
+                                                                break;
+
+                                                            case 74:
+                                                                MySheet.Cells[row, colofTagTd].Value = item_TagTd.Text.ToString();
+                                                                package.Save();
+                                                                break;
+
+                                                            case 75:
+                                                                MySheet.Cells[row, colofTagTd].Value = item_TagTd.Text.ToString();
+                                                                package.Save();
+                                                                break;
+
+                                                            case 79:
+                                                                MySheet.Cells[row, colofTagTd].Value = item_TagTd.Text.ToString();
+                                                                package.Save();
+                                                                break;
+
+                                                            case 80:
+                                                                MySheet.Cells[row, colofTagTd].Value = item_TagTd.Text.ToString();
+                                                                package.Save();
+                                                                break;
+
+                                                            default:
+                                                                break;
+                                                        }
                                                     }
                                                 }
                                                 row++;
