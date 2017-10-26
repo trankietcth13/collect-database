@@ -102,6 +102,7 @@
     <Compile Include="CommonMethods.cs" />
     <Compile Include="EAPageObjectforKeyProgram.cs" />
     <Compile Include="EAPageObjectforScheMain.cs" />
+    <Compile Include="EnumMakes.cs" />
     <Compile Include="GetDataOnWebUI.cs">
       <SubType>Form</SubType>
     </Compile>
