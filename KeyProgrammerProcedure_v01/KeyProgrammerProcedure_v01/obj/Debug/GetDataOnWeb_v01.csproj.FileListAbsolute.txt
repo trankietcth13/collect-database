@@ -94,3 +94,6 @@ G:\Soft\Software_Innova\CollectDatabase\collect-database\KeyProgrammerProcedure_
 G:\Soft\Software_Innova\CollectDatabase\collect-database\KeyProgrammerProcedure_v01\KeyProgrammerProcedure_v01\obj\Debug\KeyProgrammerProcedure_v01.application
 G:\Soft\Software_Innova\CollectDatabase\collect-database\KeyProgrammerProcedure_v01\KeyProgrammerProcedure_v01\obj\Debug\KeyProgrammerProcedure_v01.exe
 G:\Soft\Software_Innova\CollectDatabase\collect-database\KeyProgrammerProcedure_v01\KeyProgrammerProcedure_v01\obj\Debug\KeyProgrammerProcedure_v01.pdb
+G:\Soft\Software_Innova\CollectDatabase\collect-database\KeyProgrammerProcedure_v01\KeyProgrammerProcedure_v01\obj\Debug\GetDataOnWeb_v01.csprojResolveAssemblyReference.cache
+G:\Soft\Software_Innova\CollectDatabase\collect-database\KeyProgrammerProcedure_v01\KeyProgrammerProcedure_v01\bin\Debug\Microsoft.Office.Interop.Excel.dll
+G:\Soft\Software_Innova\CollectDatabase\collect-database\KeyProgrammerProcedure_v01\KeyProgrammerProcedure_v01\bin\Debug\Microsoft.Office.Interop.Word.dll

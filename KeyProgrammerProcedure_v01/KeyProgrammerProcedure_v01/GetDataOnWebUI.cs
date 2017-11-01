@@ -27,7 +27,6 @@ namespace KeyProgrammerProcedure_v01
         //Navigate button
         private void button1_Click(object sender, EventArgs e)
         {
-
             //build Key Programmer Procedure
             if (textBox1.Text.Contains("wikirke"))
             {
@@ -133,6 +132,13 @@ namespace KeyProgrammerProcedure_v01
                 PropertiesCollection.NavigatetoURL(textBox1.Text);
 
             }
+
+            //build collect data of DTC code
+            if (textBox1.Text.Contains("repair.alldata"))
+            {
+                //navigate to URL
+                PropertiesCollection.NavigatetoURL("https://repair.alldata.com/alldata/secure/login.action");
+            }
         }
 
         //get Img for Make/Year
@@ -141,8 +147,6 @@ namespace KeyProgrammerProcedure_v01
             KeyProgrammerProcedure.make = cmbMakes.SelectedItem.ToString();
             KeyProgrammerProcedure.GetImgforMake();
             MessageBox.Show("DONE");
-
-
         }
 
         //get Data for Make/Year
@@ -220,8 +224,26 @@ namespace KeyProgrammerProcedure_v01
                     MessageBox.Show("DONE");
                 }
             }
+            if (textBox1.Text.Contains("repair.alldata"))
+            {
+                if (String.IsNullOrEmpty(txtUsername.Text) || String.IsNullOrEmpty(txtPassword.Text))
+                {
+                    MessageBox.Show("Please enter username and password");
+                }
+                else
+                {
+                    CommonMethods.LogIntoWebsite(txtUsername.Text, txtPassword.Text, By.Id("login"), By.Id("password"), By.ClassName("login_shrt_btn_rdy"));
+                    System.Threading.Thread.Sleep(3000);
+                   
+                    //username: vninnova -- --- password: conghoa364
+                    PropertiesCollection.NavigatetoURL("https://repair.alldata.com/alldata/secure/login.action");
+                    System.Threading.Thread.Sleep(2000);
+                   
+                    GetdataDTC.GetAllDataDTC();
+                    MessageBox.Show("DONE");
+                }               
+            }
             Console.Clear();
-
         }
 
         //get Data for all Makes/Years
@@ -298,6 +320,16 @@ namespace KeyProgrammerProcedure_v01
             {
                 Autocodes.make = cmbMakes.SelectedItem.ToString();
             }
+        }
+
+        private void txtUsername_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtPassword_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
