@@ -15,7 +15,6 @@ namespace KeyProgrammerProcedure_v01
     class GetDataSourcebci
     {
 
-
         public static List<string> listMake = new List<string>
         {
             "ACURA", //done
@@ -110,7 +109,8 @@ namespace KeyProgrammerProcedure_v01
             foreach (string _listMakes in AllMakes)
             {
                 //skip Please choose Make
-                if (String.IsNullOrEmpty(_listMakes) || String.IsNullOrWhiteSpace(_listMakes) || _listMakes.Contains("-select-") || _listMakes.Contains("Acura") || _listMakes.Contains("Hummer") || _listMakes.Contains("Cadillac") || _listMakes.Contains("Buick") || _listMakes.Contains("BMW") || _listMakes.Contains("Audi") || _listMakes.Contains("Chevrolet") || _listMakes.Contains("Chrysler") || _listMakes.Contains("Dodge") || _listMakes.Contains("Eagle") || _listMakes.Contains("Geo") || _listMakes.Contains("GMC") || _listMakes.Contains("Honda") || _listMakes.Contains("Hyundai") || _listMakes.Contains("Infiniti") || _listMakes.Contains("Isuzu") || _listMakes.Contains("Jaguar"))//Chrysler|| _listMakes.Contains("Acura") 
+                if (String.IsNullOrEmpty(_listMakes) || String.IsNullOrWhiteSpace(_listMakes) || _listMakes.Contains("-select-") || _listMakes.Contains("Acura") || _listMakes.Contains("Audi" +
+                    "") || _listMakes.Contains("BMW") || _listMakes.Contains("Hummer") || _listMakes.Contains("Cadillac") || _listMakes.Contains("Buick") || _listMakes.Contains("Chevrolet") || _listMakes.Contains("Chrysler") || _listMakes.Contains("Dodge") || _listMakes.Contains("Eagle") || _listMakes.Contains("Geo") || _listMakes.Contains("GMC") || _listMakes.Contains("Honda") || _listMakes.Contains("Hyundai") || _listMakes.Contains("Infiniti") || _listMakes.Contains("Isuzu") || _listMakes.Contains("Jaguar"))//Chrysler|| _listMakes.Contains("Acura") 
                 {
                     continue;
                 }
@@ -144,7 +144,7 @@ namespace KeyProgrammerProcedure_v01
                                     continue;
                                 }
                                 int year = Convert.ToInt32(_listYears);
-                                if (year < 2008 || year > 2016)
+                                if (year < 1986 || year > 2016)
                                 {
                                     continue;
                                 }
@@ -192,8 +192,7 @@ namespace KeyProgrammerProcedure_v01
                                             IList<IWebElement> TagTd_img = FindTagTd.FindElements(By.TagName("img"));   
                                             List<string> allTagimg = CommonMethods.ListStringfromIList(TagTd_img);
                                             int img_num = 0;
-                                            int count2 = 0;
-
+                                            int count2 = 0;                                        
                                             foreach (var itemTD in allTagimg)
                                             {
                                                 count2++;
@@ -217,6 +216,7 @@ namespace KeyProgrammerProcedure_v01
                                                     }
                                                 }
                                             }
+                                            // -----End-----Find and click plus button ------
 
                                             //List database 
                                             int colofTagTd = 4;
@@ -225,7 +225,7 @@ namespace KeyProgrammerProcedure_v01
                                             IWebElement FindTagTd2 = PropertiesCollection.driver.FindElement(By.ClassName("gridview"));
                                             IList<IWebElement> TagTd_table2 = FindTagTd.FindElements(By.TagName("td"));
                                             List<string> AlltagTd2 = CommonMethods.ListStringfromIList(TagTd_table2);
-
+                                           
                                             #region Collect data
                                             foreach (var item_TagTd in AlltagTd2)
                                             {
@@ -260,45 +260,135 @@ namespace KeyProgrammerProcedure_v01
                                                         {
                                                             MySheet.Cells[row, colofTagTd].Value = AlltagTd2[count + 1]; //get BCI
                                                             colofTagTd++;
-                                                            MySheet.Cells[row, colofTagTd].Value = AlltagTd2[count + 2]; //get CCA                                                           
-                                                            colofTagTd = 4;
-                                                            package.Save();
-                                                            row++;
-                                                            continue;
-                                                        }
-                                                        else
-                                                        {                                                           
-                                                            IWebElement findBCI_CCA_01 = PropertiesCollection.driver.FindElement(By.ClassName("subgridview"));
-                                                            IList<IWebElement> findBCI_CCA_02 = findBCI_CCA_01.FindElements(By.TagName("td"));
-                                                            IList<string> listBCI_CCA = CommonMethods.ListStringfromIList(findBCI_CCA_02);
-                                                            int count3 = 0;  
-                                                            
-                                                            foreach (var itemBCI_CCA in listBCI_CCA)
-                                                            {
-                                                                count3++;
-                                                                if (count3 >= listBCI_CCA.Count)
-                                                                {
+                                                            MySheet.Cells[row, colofTagTd].Value = AlltagTd2[count + 2]; //get CCA 
+                                                            //colofTagTd = 4;
+                                                            package.Save();                                                            
+                                                            #region Note
+                                                            //if(AlltagTd2.Count <= 6)
+                                                            //{
+                                                            //    colofTagTd++;
+                                                            //    MySheet.Cells[row, colofTagTd].Value = AlltagTd2[count + 6]; //get BCI
+                                                            //    colofTagTd++;
+                                                            //    MySheet.Cells[row, colofTagTd].Value = AlltagTd2[count + 7]; //get CCA 
+                                                            //    continue;
+                                                            //}
+
+                                                            //if(AlltagTd2.Count <= 22 )
+                                                            //{
+                                                            //    colofTagTd++;
+                                                            //    MySheet.Cells[row, colofTagTd].Value = AlltagTd2[count + 12]; //get BCI
+                                                            //    colofTagTd++;
+                                                            //    MySheet.Cells[row, colofTagTd].Value = AlltagTd2[count + 13]; //get CCA
+                                                            //    colofTagTd++;
+
+                                                            //    MySheet.Cells[row, colofTagTd].Value = AlltagTd2[count + 16]; //get BCI
+                                                            //    colofTagTd++;
+                                                            //    MySheet.Cells[row, colofTagTd].Value = AlltagTd2[count + 17]; //get CCA  
+
+                                                            //    colofTagTd++;
+                                                            //    MySheet.Cells[row, colofTagTd].Value = AlltagTd2[count + 21]; //get BCI
+                                                            //    colofTagTd++;
+                                                            //    MySheet.Cells[row, colofTagTd].Value = AlltagTd2[count + 22]; //get CCA  
+
+                                                            //}
+
+                                                            //if(AlltagTd2.Count > 22|| AlltagTd2.Count <= 82)
+                                                            //{
+                                                            //    if( AlltagTd2[count + 26] != null|| AlltagTd2[count + 27] != null|| AlltagTd2[count + 31] != null|| AlltagTd2[count + 32] != null)
+                                                            //    {
+
+
+                                                            //        colofTagTd++;
+                                                            //        MySheet.Cells[row, colofTagTd].Value = AlltagTd2[count + 26]; //get BCI
+                                                            //        colofTagTd++;
+                                                            //        MySheet.Cells[row, colofTagTd].Value = AlltagTd2[count + 27]; //get CCA  
+
+                                                            //        colofTagTd++;
+                                                            //        MySheet.Cells[row, colofTagTd].Value = AlltagTd2[count + 31]; //get BCI
+                                                            //        colofTagTd++;
+                                                            //        MySheet.Cells[row, colofTagTd].Value = AlltagTd2[count + 32]; //get CCA 
+                                                            //    }
+                                                            //    if(AlltagTd2[count + 36] != null|| AlltagTd2[count + 37] != null)
+                                                            //    {
+                                                            //        colofTagTd++;
+                                                            //        MySheet.Cells[row, colofTagTd].Value = AlltagTd2[count + 36]; //get BCI
+                                                            //        colofTagTd++;
+                                                            //        MySheet.Cells[row, colofTagTd].Value = AlltagTd2[count + 37]; //get CCA 
+                                                            //    }
+
+                                                            //    if (AlltagTd2[count + 41] != null || AlltagTd2[count + 42] != null)
+                                                            //    {
+                                                            //        colofTagTd++;
+                                                            //        MySheet.Cells[row, colofTagTd].Value = AlltagTd2[count + 41]; //get BCI
+                                                            //        colofTagTd++;
+                                                            //        MySheet.Cells[row, colofTagTd].Value = AlltagTd2[count + 42]; //get CCA 
+                                                            //    }
+
+                                                            //}
+                                                            #endregion
+                                                            #region Note 2
+                                                            //IWebElement findBCI_CCA_01 = PropertiesCollection.driver.FindElement(By.ClassName("subgridview"));
+                                                            //IList<IWebElement> findBCI_CCA_02 = findBCI_CCA_01.FindElements(By.TagName("td"));
+
+                                                            //IList<IWebElement> findtag_a = findBCI_CCA_01.FindElements(By.TagName("a"));
+                                                            //IList<string> list_tag_a = CommonMethods.ListStringfromIList(findtag_a);
+
+                                                            //IList<string> listBCI_CCA = CommonMethods.ListStringfromIList(findBCI_CCA_02);
+                                                            //int count3 = 0;
+
+                                                            //foreach (var itemBCI_CCA in list_tag_a)
+                                                            //{
+                                                            //    count3++;
+                                                            //    if (count3 > list_tag_a.Count)
+                                                            //    {
+                                                            //        break;
+                                                            //    }
+                                                            //    if (String.IsNullOrEmpty(itemBCI_CCA) || String.IsNullOrWhiteSpace(itemBCI_CCA)|| itemBCI_CCA == item_TagTd || itemBCI_CCA == AlltagTd2[count]||itemBCI_CCA.Contains("-"))
+                                                            //    {
+                                                            //        continue;
+                                                            //    }
+                                                            //    else
+                                                            //    {
+                                                            //        colofTagTd++;
+                                                            //        MySheet.Cells[row, colofTagTd].Value = AlltagTd2[count + 1]; //get BCI
+                                                            //        colofTagTd++;
+                                                            //        MySheet.Cells[row, colofTagTd].Value = AlltagTd2[count + 2]; //get CCA                                                   
+                                                            //        colofTagTd = 4;
+                                                            //        package.Save();
+                                                            //        continue;
+
+                                                            //    }
+                                                            //}
+                                                            #endregion
+
+                                                            for(int i =1; i<=AlltagTd2.Count; i++)
+                                                            {                                                                
+                                                                if (String.IsNullOrEmpty((AlltagTd2[AlltagTd2.IndexOf(item_TagTd) + 5 * (i)])) ||(AlltagTd2[AlltagTd2.IndexOf(item_TagTd)+5*(i)]) != _listMakes)//|| (AlltagTd2[AlltagTd2.IndexOf(item_TagTd) + 5 * (i)])!=null)
+                                                                {                                                                        
+                                                                        //if (AlltagTd2[AlltagTd2.IndexOf(item_TagTd) + (5 * i) + 2].ToString() == _listMakes || AlltagTd2[AlltagTd2.IndexOf(item_TagTd) + (5 * i) + 3].ToString() == _listMakes)// || AlltagTd2[AlltagTd2.IndexOf(item_TagTd) + (5 * i) + 3].ToString() == _listModels|| AlltagTd2[AlltagTd2.IndexOf(item_TagTd) + (5 * i) + 3].ToString() == _listYears)
+                                                                        //{
+                                                                        //    break;
+                                                                        //}
+                                                                        //else
+                                                                        //{
+                                                                            colofTagTd++;
+                                                                            MySheet.Cells[row, colofTagTd].Value = AlltagTd2[AlltagTd2.IndexOf(item_TagTd)  + 6];
+                                                                            colofTagTd++;
+                                                                            MySheet.Cells[row, colofTagTd].Value = AlltagTd2[AlltagTd2.IndexOf(item_TagTd)  + 7];
+                                                                            package.Save();
+                                                                            continue;
+                                                                       // }
+                                                                }
+
+                                                                else
+                                                                {                                                                   
                                                                     break;
                                                                 }
-                                                                if (String.IsNullOrEmpty(itemBCI_CCA)||String.IsNullOrWhiteSpace(itemBCI_CCA) || itemBCI_CCA == item_TagTd || itemBCI_CCA == AlltagTd2[count]||itemBCI_CCA.Contains("-"))
-                                                                {
-                                                                    continue;
-                                                                }                                                               
-                                                                else
-                                                                {
-                                                                    if (itemBCI_CCA.Trim().ToLower().Contains("notes"))
-                                                                    {
-                                                                        colofTagTd++;   
-                                                                        MySheet.Cells[row, colofTagTd].Value = itemBCI_CCA; //get BCI
-                                                                        colofTagTd++;                                                                      
-                                                                        MySheet.Cells[row, colofTagTd].Value = listBCI_CCA[count3]; //get CCA                                                           
-                                                                        colofTagTd = 4;
-                                                                        package.Save();
-                                                                        continue;
-                                                                    }
-                                                                }
                                                             }
-                                                        }
+                                                            row++;
+                                                            colofTagTd = 4;
+                                                            continue;
+                                                        }                                                       
                                                     }
                                                 }
                                             }
