@@ -109,8 +109,7 @@ namespace KeyProgrammerProcedure_v01
             foreach (string _listMakes in AllMakes)
             {
                 //skip Please choose Make
-                if (String.IsNullOrEmpty(_listMakes) || String.IsNullOrWhiteSpace(_listMakes) || _listMakes.Contains("-select-") || _listMakes.Contains("Acura") || _listMakes.Contains("Audi" +
-                    "") || _listMakes.Contains("BMW") || _listMakes.Contains("Hummer") || _listMakes.Contains("Cadillac") || _listMakes.Contains("Buick") || _listMakes.Contains("Chevrolet") || _listMakes.Contains("Chrysler") || _listMakes.Contains("Dodge") || _listMakes.Contains("Eagle") || _listMakes.Contains("Geo") || _listMakes.Contains("GMC") || _listMakes.Contains("Honda") || _listMakes.Contains("Hyundai") || _listMakes.Contains("Infiniti") || _listMakes.Contains("Isuzu") || _listMakes.Contains("Jaguar"))//Chrysler|| _listMakes.Contains("Acura") 
+                if (String.IsNullOrEmpty(_listMakes) || String.IsNullOrWhiteSpace(_listMakes) || _listMakes.Contains("-select-") || _listMakes.Contains("Acura") || _listMakes.Contains("Audi") || _listMakes.Contains("BMW") || _listMakes.Contains("Hummer") || _listMakes.Contains("Cadillac") || _listMakes.Contains("Buick") || _listMakes.Contains("Chevrolet") || _listMakes.Contains("Chrysler") || _listMakes.Contains("Dodge") || _listMakes.Contains("Eagle") || _listMakes.Contains("Geo") || _listMakes.Contains("GMC") || _listMakes.Contains("Honda") || _listMakes.Contains("Hyundai") || _listMakes.Contains("Infiniti") || _listMakes.Contains("Isuzu") || _listMakes.Contains("Jaguar"))//Chrysler|| _listMakes.Contains("Acura") 
                 {
                     continue;
                 }
@@ -126,8 +125,7 @@ namespace KeyProgrammerProcedure_v01
                             IWebElement elementMakes4 = PropertiesCollection.driver.FindElement(By.Id("MainContent_ddMake1"));
                             //select Make on DDL
                             elementMakes4.AsDropDown().SelectByText(_listMakes);
-                            //MySheet.Cells[row, 1].Value = _listMakes;
-                            //package.Save();
+                           
                             System.Threading.Thread.Sleep(4000);
 
                             IWebElement elementYears = PropertiesCollection.driver.FindElement(By.Id("MainContent_ddYear1"));
@@ -155,8 +153,6 @@ namespace KeyProgrammerProcedure_v01
                                     //select Make on DDL
                                     elemenYears4.AsDropDown().SelectByText(_listYears);
 
-                                    //MySheet.Cells[row, 2].Value = _listYears;
-                                    //package.Save();
 
                                     System.Threading.Thread.Sleep(5000);
 
@@ -168,7 +164,7 @@ namespace KeyProgrammerProcedure_v01
                                     foreach (string _listModels in AllModels)
                                     {
                                         //skip Please choose Model
-                                        if (String.IsNullOrEmpty(_listModels) || String.IsNullOrWhiteSpace(_listModels) || _listModels.Contains("-select-") || _listModels.Contains("Compass"))//
+                                        if (String.IsNullOrEmpty(_listModels) || String.IsNullOrWhiteSpace(_listModels) || _listModels.Contains("-select-"))
                                         {
                                             continue;
                                         }
@@ -259,7 +255,7 @@ namespace KeyProgrammerProcedure_v01
                                                         if (item_TagTd.Trim().ToLower().Contains("notes"))
                                                         {
                                                             MySheet.Cells[row, colofTagTd].Value = AlltagTd2[count + 1]; //get BCI
-                                                            colofTagTd++;
+                                                            colofTagTd++;   
                                                             MySheet.Cells[row, colofTagTd].Value = AlltagTd2[count + 2]; //get CCA 
                                                             //colofTagTd = 4;
                                                             package.Save();                                                            
@@ -360,31 +356,54 @@ namespace KeyProgrammerProcedure_v01
                                                             //    }
                                                             //}
                                                             #endregion
+                                                            
+                                                            for(int i =1; i<AlltagTd2.Count; i++)
+                                                            {
+                                                                //size of all  tagTd > index of td after td contains Notes
+                                                                if (AlltagTd2.Count > (AlltagTd2.IndexOf(item_TagTd)+1 + (5 * i)))
+                                                                {
+                                                                    //text of td after td Notes == null
+                                                                    if(AlltagTd2[AlltagTd2.IndexOf(item_TagTd) + 1 + (5 * i)] == null)
+                                                                    {
+                                                                        //text of td after td Notes = make
+                                                                        if (AlltagTd2[AlltagTd2.IndexOf(item_TagTd) + 2 + (5 * i)].ToLower().Equals(_listMakes.ToLower()))
+                                                                        {
+                                                                            break;
+                                                                        }                                                                        
+                                                                    }
 
-                                                            for(int i =1; i<=AlltagTd2.Count; i++)
-                                                            {                                                                
-                                                                if (String.IsNullOrEmpty((AlltagTd2[AlltagTd2.IndexOf(item_TagTd) + 5 * (i)])) ||(AlltagTd2[AlltagTd2.IndexOf(item_TagTd)+5*(i)]) != _listMakes)//|| (AlltagTd2[AlltagTd2.IndexOf(item_TagTd) + 5 * (i)])!=null)
-                                                                {                                                                        
-                                                                        //if (AlltagTd2[AlltagTd2.IndexOf(item_TagTd) + (5 * i) + 2].ToString() == _listMakes || AlltagTd2[AlltagTd2.IndexOf(item_TagTd) + (5 * i) + 3].ToString() == _listMakes)// || AlltagTd2[AlltagTd2.IndexOf(item_TagTd) + (5 * i) + 3].ToString() == _listModels|| AlltagTd2[AlltagTd2.IndexOf(item_TagTd) + (5 * i) + 3].ToString() == _listYears)
-                                                                        //{
-                                                                        //    break;
-                                                                        //}
-                                                                        //else
-                                                                        //{
-                                                                            colofTagTd++;
-                                                                            MySheet.Cells[row, colofTagTd].Value = AlltagTd2[AlltagTd2.IndexOf(item_TagTd)  + 6];
-                                                                            colofTagTd++;
-                                                                            MySheet.Cells[row, colofTagTd].Value = AlltagTd2[AlltagTd2.IndexOf(item_TagTd)  + 7];
-                                                                            package.Save();
-                                                                            continue;
-                                                                       // }
+                                                                    if (AlltagTd2[AlltagTd2.IndexOf(item_TagTd) + 2 + (5 * i)].ToLower().Equals(_listMakes.ToLower()))
+                                                                    {
+                                                                        break;
+                                                                    }
+                                                                    colofTagTd++;
+                                                                    MySheet.Cells[row, colofTagTd].Value = AlltagTd2[AlltagTd2.IndexOf(item_TagTd)+2 + (5 * i)];
+                                                                    colofTagTd++;
+                                                                    MySheet.Cells[row, colofTagTd].Value = AlltagTd2[AlltagTd2.IndexOf(item_TagTd)+3 + (5 * i)];
+                                                                    package.Save();
+                                                                    continue;
+
+                                                                    //if ((AlltagTd2[AlltagTd2.IndexOf(item_TagTd) + (5 * i)]) != _listMakes || String.IsNullOrEmpty((AlltagTd2[AlltagTd2.IndexOf(item_TagTd) + (5 * i)])))
+                                                                    //{
+                                                                    //    colofTagTd++;
+                                                                    //    MySheet.Cells[row, colofTagTd].Value = AlltagTd2[AlltagTd2.IndexOf(item_TagTd) + (5 * i) + 7];
+                                                                    //    colofTagTd++;
+                                                                    //    MySheet.Cells[row, colofTagTd].Value = AlltagTd2[AlltagTd2.IndexOf(item_TagTd) + (5 * i) + 8];
+                                                                    //    package.Save();
+                                                                    //    continue;
+
+                                                                    //}
+                                                                    //else
+                                                                    //{
+                                                                    //    break;
+                                                                    //}
                                                                 }
-
                                                                 else
-                                                                {                                                                   
+                                                                {
                                                                     break;
                                                                 }
                                                             }
+
                                                             row++;
                                                             colofTagTd = 4;
                                                             continue;
