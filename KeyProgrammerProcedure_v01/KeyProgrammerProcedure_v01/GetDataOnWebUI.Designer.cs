@@ -38,7 +38,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cmbModel = new System.Windows.Forms.ComboBox();
             this.cmbMakes = new System.Windows.Forms.ComboBox();
             this.btnBuildData = new System.Windows.Forms.Button();
             this.btnGetData = new System.Windows.Forms.Button();
@@ -88,6 +88,7 @@
             this.cmbYears.Name = "cmbYears";
             this.cmbYears.Size = new System.Drawing.Size(82, 21);
             this.cmbYears.TabIndex = 3;
+            this.cmbYears.SelectedIndexChanged += new System.EventHandler(this.cmbYears_SelectedIndexChanged);
             // 
             // groupBox1
             // 
@@ -96,7 +97,7 @@
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.comboBox2);
-            this.groupBox1.Controls.Add(this.comboBox1);
+            this.groupBox1.Controls.Add(this.cmbModel);
             this.groupBox1.Controls.Add(this.cmbMakes);
             this.groupBox1.Controls.Add(this.cmbYears);
             this.groupBox1.Location = new System.Drawing.Point(57, 86);
@@ -157,12 +158,13 @@
             // 
             // comboBox1
             // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(265, 53);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(177, 21);
-            this.comboBox1.TabIndex = 3;
+            this.cmbModel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbModel.FormattingEnabled = true;
+            this.cmbModel.Location = new System.Drawing.Point(265, 53);
+            this.cmbModel.Name = "cmbModel";
+            this.cmbModel.Size = new System.Drawing.Size(177, 21);
+            this.cmbModel.TabIndex = 3;
+            this.cmbModel.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // cmbMakes
             // 
@@ -308,7 +310,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cmbModel;
         private System.Windows.Forms.ComboBox cmbMakes;
         private System.Windows.Forms.Button btnBuildData;
         private System.Windows.Forms.Button btnGetData;

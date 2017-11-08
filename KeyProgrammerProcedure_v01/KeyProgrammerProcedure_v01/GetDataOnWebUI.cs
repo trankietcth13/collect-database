@@ -114,7 +114,6 @@ namespace KeyProgrammerProcedure_v01
                 {
                     cmbMakes.Items.Add(item);
                 }
-
             }
 
             //build Source BCI
@@ -122,7 +121,30 @@ namespace KeyProgrammerProcedure_v01
             {
                 //navigate to URL
                 PropertiesCollection.NavigatetoURL("http://sourcebci.com/Account/Login.aspx?error=The%20user%20session%20has%20timed%20out.%20%20Please%20log%20in%20again.");
+                System.Threading.Thread.Sleep(5000);
 
+                //Input username
+                IWebElement InputUsername = PropertiesCollection.driver.FindElement(By.Id("MainContent_LoginUser_UserName"));
+                InputUsername.SendKeys("Sonle");
+                System.Threading.Thread.Sleep(1000);
+
+                //Input Password
+                IWebElement InputPassword = PropertiesCollection.driver.FindElement(By.Id("MainContent_LoginUser_Password"));
+                InputPassword.SendKeys("Innova17352");
+                System.Threading.Thread.Sleep(1000);
+
+                //Click Login
+                IWebElement findBtnLogin = PropertiesCollection.driver.FindElement(By.Id("MainContent_LoginUser_LoginButton"));
+                findBtnLogin.Click();
+                System.Threading.Thread.Sleep(5000);
+
+                //Load page Passenger Car and light trucks
+                PropertiesCollection.NavigatetoURL("http://sourcebci.com/app_passcartruck.aspx");
+                System.Threading.Thread.Sleep(4000);
+
+                //Sourcebci.GetDataAll();
+                GetDataSourcebci.WriteDataExcel();
+                //MessageBox.Show("DONE");
             }
 
             //build Possible Causes via wiki-cross
@@ -202,6 +224,7 @@ namespace KeyProgrammerProcedure_v01
                 MessageBox.Show("DONE");
             }
 
+            //Get database CCA
             if (textBox1.Text.Contains("sourcebci"))
             {
                 if (String.IsNullOrEmpty(txtUsername.Text) || String.IsNullOrEmpty(txtPassword.Text))
@@ -216,8 +239,59 @@ namespace KeyProgrammerProcedure_v01
                     //Passenger Cars and Light Trucks
                     //IWebElement elementPassenger = PropertiesCollection.driver.FindElement(By.LinkText("Passenger Cars and Light Trucks"));//LinkText("Passenger Cars and Light Trucks"));
                     //elementPassenger.Click();
+
                     PropertiesCollection.NavigatetoURL("http://sourcebci.com/app_passcartruck.aspx");
                     System.Threading.Thread.Sleep(1000);
+
+                    #region Add YMME To Combobox
+                    //add make to combobox
+                    //IWebElement elementMake = PropertiesCollection.driver.FindElement(By.Id("MainContent_ddMake1"));
+                    //var options_makes = elementMake.AsDropDown().Options;
+                    //foreach (IWebElement linkTextMake in options_makes)
+                    //{
+                    //    if (String.IsNullOrEmpty(linkTextMake.Text) || String.IsNullOrWhiteSpace(linkTextMake.Text))
+                    //    {
+                    //        continue;
+                    //    }
+                    //    else
+                    //    {
+                    //        cmbMakes.Items.Add(linkTextMake.Text);
+
+                    //        if (cmbMakes != null)
+                    //        {
+                    //            //add years to combobox
+                    //            IWebElement elementYears = PropertiesCollection.driver.FindElement(By.Id("MainContent_ddYear1"));
+                    //            var options = elementYears.AsDropDown().Options;
+                    //            foreach (IWebElement linkTextYear in options)
+                    //            {
+                    //                if (String.IsNullOrEmpty(linkTextYear.Text) || String.IsNullOrWhiteSpace(linkTextYear.Text))
+                    //                {
+                    //                    continue;
+                    //                }
+                    //                else
+                    //                {
+                    //                    cmbYears.Items.Add(linkTextYear.Text);
+                    //                }
+                    //            }
+                    //        }
+                    //    }
+                    //}
+
+                    //add model to combobox
+                    IWebElement elementModel = PropertiesCollection.driver.FindElement(By.Id("MainContent_ddModel1"));
+                    var options_model = elementModel.AsDropDown().Options;
+                    foreach (IWebElement linkTextModel in options_model)
+                    {
+                        if (String.IsNullOrEmpty(linkTextModel.Text) || String.IsNullOrWhiteSpace(linkTextModel.Text))
+                        {
+                            continue;
+                        }
+                        else
+                        {
+                            cmbModel.Items.Add(linkTextModel.Text);
+                        }
+                    }
+                    #endregion
 
                     //Sourcebci.GetDataAll();
                     GetDataSourcebci.WriteDataExcel();
@@ -328,6 +402,16 @@ namespace KeyProgrammerProcedure_v01
         }
 
         private void txtPassword_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmbYears_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

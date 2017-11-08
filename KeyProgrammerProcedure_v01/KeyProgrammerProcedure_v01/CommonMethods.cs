@@ -38,12 +38,12 @@ namespace GetDataOnWeb_v01
         public static List<string> ListStringfromIList(IList<IWebElement> listElements)
         {
             List<string> matchingLinks = new List<string>(listElements.Count);
-           // System.Threading.Thread.Sleep(5000);
+           // System.Threading.Thread.Sleep(3000);
             foreach (IWebElement linkTextElement in listElements)
             {                
-               matchingLinks.Add(linkTextElement.Text);                                   
+               matchingLinks.Add(linkTextElement.Text);               
             }
-           // System.Threading.Thread.Sleep(5000);
+           // System.Threading.Thread.Sleep(3000);
             return matchingLinks;
         }
 
